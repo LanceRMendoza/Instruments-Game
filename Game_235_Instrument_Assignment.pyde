@@ -1,4 +1,4 @@
-# Game 235 Instrument Assignment
+# Instrument Assignment
 
 # Welcome to the game Instruments.
 # To play a sound, please press the left mouse button to play a sound dependent upon where you click on the canvas.
@@ -12,7 +12,7 @@ add_library('sound') # add_library used to load a library into a Processing sket
 isReleased = False
 keyEReleased = False
 
-NOTE_MAX_SIZE = 200.0 # All caps denote constant variable.
+NOTE_MAX_SIZE = 200.0
 noteX = []
 noteY = []
 noteSize = []
@@ -38,7 +38,7 @@ def setup (): # starts
     
     # Sounds imported to processing
     Coolio = SoundFile(this, "Coolio.wav")
-    Gunshot = SoundFile(this, "Gunshot.wav") # sound file needs to be in your folder.
+    Gunshot = SoundFile(this, "Gunshot.wav")
     Explosion7 = SoundFile(this, "Explosion7.wav")
     Scream = SoundFile(this, "Scream.wav")
     Jason = SoundFile(this, "Jason.wav")
@@ -54,7 +54,6 @@ def setup (): # starts
     Coolio.play()
     
 def draw(): # update
-    # releasing mouse button if pressed once. # if mouse is released previous True statement is false and it prints released.
     global isReleased, osc, attackTime, sustainTime, sustainLevel, releaseTime, keyEReleased, sqr, keySize, releventKeyPressed, keyPress
     background (0)
     
@@ -78,18 +77,15 @@ def draw(): # update
         isReleased = False
     
     # --- Draw
-    fill (0,0,0,0) # red, green, blue, alpha
+    fill (0,0,0,0)
     
         
     for i in range(len(noteX)):
         noteSize[i] += 1
         
-        # integer division needs to be a float division or it will equal to 0. 
-        # multiplying float adds all integers in numbers.v
         colorAlphaValue = 255 * ((NOTE_MAX_SIZE - noteSize[i])/float(NOTE_MAX_SIZE))
-        stroke(mouseX, mouseY, 255, colorAlphaValue) # added mouseX or mouseY to have it depend on the mouse position.
+        stroke(mouseX, mouseY, 255, colorAlphaValue)
         
-        # for each of our note we want to make a note on that spot.
         circle (noteX[i], noteY[i], noteSize[i])
         circle (noteX[i], noteY[i], noteSize[i]/2)
         circle (noteX[i], noteY[i], noteSize[i]/3)
@@ -132,7 +128,7 @@ def keyPressed():
         exit()
         
         
-def keyReleased(): # upon key released so keys cant be hold down.
+def keyReleased():
     relevantKeyPressed = False
     otherArtKeyPress = False
         
